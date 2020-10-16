@@ -1,0 +1,52 @@
+h1, h2, h3 {
+    font-family: sans-serif;
+    min-width: 10em;
+}
+
+body {
+    padding: 0 2em;
+}
+
+#philosophy {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0;
+}
+
+#philosophy > p {
+    text-align: center;
+    align-self: center;
+    font-size: large;
+}
+
+
+header, section {
+    display: flex;
+    border-right: 4px solid black;
+    border-left: 4px solid black;
+    padding: 0 2em;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+
+header {
+    flex-direction: row;
+}
+header > h1 {
+    flex: auto;
+}
+
+section {
+    flex-direction: column;
+}
+
+.company {
+    font-weight: bold;
+}
+.title {
+    margin-bottom: 0;
+}
+
+li {
+    margin-bottom: .5em;
+}
