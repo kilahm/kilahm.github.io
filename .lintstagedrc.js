@@ -1,5 +1,6 @@
 module.exports = {
-  '**/*.((t|j)s?(x)|html|?(s)css)': () => [
-    'nx affected:lint --fix --base=main',
+  '(apps|libs|tools)/**/*': () => [
+    'nx affected:lint --fix --uncommitted',
+    'nx affected:test --uncommitted'
   ]
 }
