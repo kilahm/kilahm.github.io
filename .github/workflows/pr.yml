@@ -15,11 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 10
+      - name: fetch main branch
+        run: git fetch --no-tags --prune --depth=5 origin main
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
       - name: Install Dependencies
         run: npm ci
-      - name: Run tests
-        run: npx nx affected:test --base=main
+      - name: lint
+        run: npx nx affected:lint --base=origin/main
+      - name: test
+        run: npx nx affected:test --base=origin/main
