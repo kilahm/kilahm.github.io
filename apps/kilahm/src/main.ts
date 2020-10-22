@@ -9,7 +9,5 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule, {
-    defaultEncapsulation: ViewEncapsulation.Native,
-  })
+  .bootstrapModule(AppModule)
   .catch((err) => console.error(err));

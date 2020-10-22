@@ -1,0 +1,66 @@
+h2 {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+    margin-left: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 .5rem 0;
+}
+
+#contact {
+    align-self: center;
+}
+
+#philosophy>p:last-child {
+    margin-bottom: 0;
+}
+
+#philosophy>p:first-child {
+    margin-top: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+header>h1 {
+    flex: auto;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    border-right: 4px solid black;
+    border-left: 4px solid black;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+.company {
+    font-weight: bold;
+}
+
+ul {
+    padding-left: 2rem;
+    margin-bottom: 0;
+}
+
+li {
+    margin-bottom: .5rem;
+}
+
+li:last-child {
+    margin-bottom: 0;
+}
+
+.tool>.description {
+    margin-left: 2rem;
+}
