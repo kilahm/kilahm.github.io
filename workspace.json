@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "projects": {
+    "kilahm": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/kilahm",
+      "sourceRoot": "apps/kilahm/src",
+      "prefix": "kilahm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/kilahm",
+            "index": "apps/kilahm/src/index.html",
+            "main": "apps/kilahm/src/main.ts",
+            "polyfills": "apps/kilahm/src/polyfills.ts",
+            "tsConfig": "apps/kilahm/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/kilahm/src/favicon.ico", "apps/kilahm/src/assets"],
+            "styles": ["apps/kilahm/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/kilahm/src/environments/environment.ts",
+                  "with": "apps/kilahm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "kilahm:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "kilahm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "kilahm:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/kilahm/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/kilahm/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "kilahm-e2e": {
+      "root": "apps/kilahm-e2e",
+      "sourceRoot": "apps/kilahm-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/kilahm-e2e/cypress.json",
+            "tsConfig": "apps/kilahm-e2e/tsconfig.e2e.json",
+            "devServerTarget": "kilahm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "kilahm:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/kilahm-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "strict": true
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "kilahm"
+}

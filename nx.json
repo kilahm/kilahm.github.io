@@ -1,0 +1,37 @@
+{
+  "npmScope": "kilahm",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "accessToken": "Mjk4MWM5N2YtMDYxZC00ODUxLTllYjgtMDFiZTA1MWI1OTdjfHJlYWQtd3JpdGU=",
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
+      }
+    }
+  },
+  "projects": {
+    "kilahm": {
+      "tags": []
+    },
+    "kilahm-e2e": {
+      "tags": [],
+      "implicitDependencies": ["kilahm"]
+    }
+  }
+}
