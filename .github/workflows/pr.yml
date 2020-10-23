@@ -7,6 +7,7 @@ on:
 
 env:
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NxCloudKey }}
+  NODE_VERSION: '12'
 
 jobs:
   test:
@@ -15,12 +16,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 10
-      - name: fetch main branch
-        run: git fetch --no-tags --prune --depth=5 origin main
+          fetch-depth: 0
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '12'
+          node-version: ${{ env.NODE_VERSION }}
+      - name: npm cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules-v${{ env.NODE_VERSION }}
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: fetch main branch
+        run: git fetch --no-tags --prune --depth=5 origin main
       - name: Install Dependencies
         run: npm ci
       - name: lint
