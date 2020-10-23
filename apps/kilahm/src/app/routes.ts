@@ -5,9 +5,5 @@ export const routes: Route[] = [
   {
     component: ResumeComponent,
     path: 'resume',
-  },
-  {
-    path: '**',
-    redirectTo: '/resume',
-  },
+  }
 ];
