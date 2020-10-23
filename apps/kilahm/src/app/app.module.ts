@@ -10,7 +10,7 @@ import { routes } from './routes';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, {
-      initialNavigation: 'disabled',
+      initialNavigation: 'enabled',
       enableTracing: !environment.production,
     }),
   ],
