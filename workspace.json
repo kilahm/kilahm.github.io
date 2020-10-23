@@ -21,7 +21,11 @@
             "polyfills": "apps/kilahm/src/polyfills.ts",
             "tsConfig": "apps/kilahm/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/kilahm/src/favicon.ico", "apps/kilahm/src/assets"],
+            "assets": [
+              "apps/kilahm/src/favicon.ico",
+              "apps/kilahm/src/assets",
+              "apps/kilahm/src/404.html"
+            ],
             "styles": ["apps/kilahm/src/styles.scss"],
             "scripts": []
           },
